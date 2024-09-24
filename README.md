@@ -1,9 +1,9 @@
-#Projekto pavadinimas: Filmų recenzijų platforma
+# Projekto pavadinimas: Filmų recenzijų platforma
 
-##Sprendžiamo uždavinio aprašymas:
-###1)	Sistemos paskirtis: 
+## Sprendžiamo uždavinio aprašymas:
+### 1)	Sistemos paskirtis: 
 ### Platforma skirta talpinti informaciją apie filmus (viršelio nuotrauka, pavadinimas, aprašymas, žanras, trukmė, leidimo metai, režisierius, pagrindiniai aktoriai), rašyti recenzijas ir jas komentuoti, taip pateikiant savo nuomonę apie recenziją arba kuriant diskusiją. 
-###2)	Funkciniai reikalavimai:
+### 2)	Funkciniai reikalavimai:
  a.	Svečio funkcionalumas:
   •	Mato filmų informaciją;
   •	Mato recenzijas;
@@ -20,10 +20,10 @@
   •	Gali pašalinti komentarą.
  Registruotas narys paveldi svečio funkcionalumą, o administratorius – ir svečio, ir registruoto nario funkcijas.
 
-##Taikomosios srities objektai:
+## Taikomosios srities objektai:
 1.	Filmas
 2.	Recenzija
 3.	Komentaras
-##Hierarchinis ryšys: Filmas -> recenzija -> komentaras
+## Hierarchinis ryšys: Filmas -> recenzija -> komentaras
 
  
