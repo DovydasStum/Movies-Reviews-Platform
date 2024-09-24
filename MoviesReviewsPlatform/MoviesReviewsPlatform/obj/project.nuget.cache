@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GC0eO6IpxKI=",
+  "dgSpecHash": "NFNcij2dR9E=",
   "success": true,
-  "projectFilePath": "D:\\Studies\\IV course\\Saitynai\\Repository\\Rider\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\MoviesReviewsPlatform.csproj",
+  "projectFilePath": "D:\\Studies\\IV course\\Saitynai\\Platform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\MoviesReviewsPlatform.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dovyd\\.nuget\\packages\\fluentvalidation\\11.10.0\\fluentvalidation.11.10.0.nupkg.sha512",
     "C:\\Users\\dovyd\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.10.0\\fluentvalidation.dependencyinjectionextensions.11.10.0.nupkg.sha512",

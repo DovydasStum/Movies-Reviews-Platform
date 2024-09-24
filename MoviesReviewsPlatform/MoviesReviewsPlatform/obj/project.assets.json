@@ -3878,11 +3878,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Studies\\IV course\\Saitynai\\Repository\\Rider\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\MoviesReviewsPlatform.csproj",
+      "projectUniqueName": "D:\\Studies\\IV course\\Saitynai\\Platform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\MoviesReviewsPlatform.csproj",
       "projectName": "MoviesReviewsPlatform",
-      "projectPath": "D:\\Studies\\IV course\\Saitynai\\Repository\\Rider\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\MoviesReviewsPlatform.csproj",
+      "projectPath": "D:\\Studies\\IV course\\Saitynai\\Platform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\MoviesReviewsPlatform.csproj",
       "packagesPath": "C:\\Users\\dovyd\\.nuget\\packages\\",
-      "outputPath": "D:\\Studies\\IV course\\Saitynai\\Repository\\Rider\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\obj\\",
+      "outputPath": "D:\\Studies\\IV course\\Saitynai\\Platform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\dovyd\\AppData\\Roaming\\NuGet\\NuGet.Config",
