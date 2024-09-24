@@ -5,10 +5,10 @@
 ### Platforma skirta talpinti informaciją apie filmus (viršelio nuotrauka, pavadinimas, aprašymas, žanras, trukmė, leidimo metai, režisierius, pagrindiniai aktoriai), rašyti recenzijas ir jas komentuoti, taip pateikiant savo nuomonę apie recenziją arba kuriant diskusiją. 
 ### 2)	Funkciniai reikalavimai:
 + a.	Svečio funkcionalumas:
-  •	Mato filmų informaciją;
-  •	Mato recenzijas;
-  •	Mato recenzijų komentarus;
-  •	Gali registruotis ir prisijungti.
+  +	Mato filmų informaciją;
+  +	Mato recenzijas;
+  +	Mato recenzijų komentarus;
+  +	Gali registruotis ir prisijungti.
 + b.	Registruoto nario funkcionalumas:
   •	Gali rašyti recenziją;
   •	Gali rašyti komentarą;
