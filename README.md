@@ -17,13 +17,13 @@
   +	Gali blokuoti narį;
   +	Gali pridėti, redaguoti ir pašalinti informaciją apie filmą;
   +	Gali pašalinti recenziją;
-  +	Gali pašalinti komentarą.
+  +	Gali pašalinti komentarą.<br>
 Registruotas narys paveldi svečio funkcionalumą, o administratorius – ir svečio, ir registruoto nario funkcijas.
 
 ## Taikomosios srities objektai:
 1.	Filmas
 2.	Recenzija
-3.	Komentaras
+3.	Komentaras<br>
 Hierarchinis ryšys: Filmas -> recenzija -> komentaras
 
  
