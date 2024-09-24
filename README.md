@@ -15,15 +15,15 @@
   +	Gali matyti savo recenzijų sąrašą.
 + Administratoriaus funkcionalumas:
   +	Gali blokuoti narį;
-  +	Gali pridėti, koreguoti ir pašalinti informaciją apie filmą;
+  +	Gali pridėti, redaguoti ir pašalinti informaciją apie filmą;
   +	Gali pašalinti recenziją;
   +	Gali pašalinti komentarą.
- Registruotas narys paveldi svečio funkcionalumą, o administratorius – ir svečio, ir registruoto nario funkcijas.
+ ### Registruotas narys paveldi svečio funkcionalumą, o administratorius – ir svečio, ir registruoto nario funkcijas.
 
 ## Taikomosios srities objektai:
 1.	Filmas
 2.	Recenzija
 3.	Komentaras
-## Hierarchinis ryšys: Filmas -> recenzija -> komentaras
+### Hierarchinis ryšys: Filmas -> recenzija -> komentaras
 
  
