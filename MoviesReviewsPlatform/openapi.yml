@@ -1,0 +1,455 @@
+openapi: 3.0.0
+info:
+  title: Movies Reviews Platform API
+  description: An API for managing movies, reviews, and comments.
+  version: 1.0.0
+
+servers:
+  - url: https://api.moviesplatform.com/v1
+
+paths:
+  /movies:
+    get:
+      summary: Get a list of movies
+      tags:
+        - Movies
+      operationId: getAllMovies
+      parameters:
+        - in: query
+          name: page
+          schema:
+            type: integer
+            default: 1
+          description: The page number to retrieve
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            default: 20
+          description: Number of items per page
+      responses:
+        "200":
+          description: A list of movies
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Movie"
+              example:
+                - id: 1
+                  name: "Inception"
+                  director: "Christopher Nolan"
+                  genre: "Sci-Fi"
+                  releaseYear: 2010
+                - id: 2
+                  name: "The Dark Knight"
+                  director: "Christopher Nolan"
+                  genre: "Action"
+                  releaseYear: 2008
+    post:
+      summary: Create a new movie
+      tags:
+        - Movies
+      operationId: createMovie
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateMovieDto"
+            example:
+              name: "Inception"
+              description: "A mind-bending thriller"
+              director: "Christopher Nolan"
+              releaseYear: 2010
+              duration: "02:28:00"
+              genre: "Sci-Fi"
+      responses:
+        "201":
+          $ref: "#/components/responses/MovieCreated"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "422":
+          $ref: "#/components/responses/UnprocessableEntity"
+
+  /movies/{movieId}:
+    parameters:
+      - $ref: '#/components/parameters/movieId'
+    get:
+      summary: Get a movie by ID
+      tags:
+        - Movies
+      operationId: getMovie
+      responses:
+        "200":
+          $ref: "#/components/responses/SingleMovie"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    put:
+      summary: Update a movie by ID
+      tags:
+        - Movies
+      operationId: updateMovie
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateMovieDto"
+            example:
+              description: "A mind-bending thriller updated"
+              director: "Christopher Nolan"
+              genre: "Sci-Fi"
+      responses:
+        "200":
+          $ref: "#/components/responses/SingleMovie"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "422":
+          $ref: "#/components/responses/UnprocessableEntity"
+    delete:
+      summary: Delete a movie by ID
+      tags:
+        - Movies
+      operationId: deleteMovie
+      responses:
+        "204":
+          description: Movie deleted
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /movies/{movieId}/reviews:
+    parameters:
+      - $ref: '#/components/parameters/movieId'
+    get:
+      summary: Get reviews for a movie
+      tags:
+        - Reviews
+      operationId: getMovieReviews
+      responses:
+        "200":
+          description: List of reviews
+    post:
+      summary: Add a review for a movie
+      tags:
+        - Reviews
+      operationId: createReview
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateReviewDto"
+            example:
+              reviewerName: "John Doe"
+              rating: 5
+              content: "An exceptional movie!"
+      responses:
+        "201":
+          description: Review created
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "422":
+          $ref: "#/components/responses/UnprocessableEntity"
+
+  /movies/{movieId}/reviews/{reviewId}:
+    parameters:
+      - $ref: '#/components/parameters/movieId'
+      - $ref: '#/components/parameters/reviewId'
+    get:
+      summary: Get a specific review for a movie
+      tags:
+        - Reviews
+      operationId: getReview
+      responses:
+        "200":
+          description: A single review
+    put:
+      summary: Update a review
+      tags:
+        - Reviews
+      operationId: updateReview
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateReviewDto"
+            example:
+              rating: 4
+              content: "The movie was good but could have been better."
+      responses:
+        "200":
+          description: Updated review
+    delete:
+      summary: Delete a review
+      tags:
+        - Reviews
+      operationId: deleteReview
+      responses:
+        "204":
+          description: Review deleted
+
+  /movies/{movieId}/reviews/{reviewId}/comments:
+    parameters:
+      - $ref: '#/components/parameters/movieId'
+      - $ref: '#/components/parameters/reviewId'
+    get:
+      summary: Get comments for a review
+      tags:
+        - Comments
+      operationId: getReviewComments
+      responses:
+        "200":
+          description: List of comments
+    post:
+      summary: Add a comment to a review
+      tags:
+        - Comments
+      operationId: createComment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateCommentDto"
+            example:
+              author: "Jane Doe"
+              content: "Great review, I agree!"
+      responses:
+        "201":
+          description: Comment added
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "422":
+          $ref: "#/components/responses/UnprocessableEntity"
+
+  /movies/{movieId}/reviews/{reviewId}/comments/{commentId}:
+    parameters:
+      - $ref: '#/components/parameters/movieId'
+      - $ref: '#/components/parameters/reviewId'
+      - $ref: '#/components/parameters/commentId'
+    get:
+      summary: Get a specific comment
+      tags:
+        - Comments
+      operationId: getComment
+      responses:
+        "200":
+          description: A single comment
+    put:
+      summary: Update a comment
+      tags:
+        - Comments
+      operationId: updateComment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateCommentDto"
+            example:
+              content: "I changed my mind, the review is spot on."
+      responses:
+        "200":
+          description: Updated comment
+    delete:
+      summary: Delete a comment
+      tags:
+        - Comments
+      operationId: deleteComment
+      responses:
+        "204":
+          description: Comment deleted
+
+components:
+  schemas:
+    Movie:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        director:
+          type: string
+        releaseYear:
+          type: integer
+        duration:
+          type: string
+        genre:
+          type: string
+    CreateMovieDto:
+      type: object
+      required:
+        - name
+        - director
+        - releaseYear
+      properties:
+        name:
+          type: string
+          minLength: 2
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 1000
+        director:
+          type: string
+          minLength: 2
+          maxLength: 100
+        releaseYear:
+          type: integer
+          minimum: 1888
+          maximum: 2100
+        duration:
+          type: string
+          pattern: "^(\\d{2}):(\\d{2}):(\\d{2})$"  # HH:MM:SS format
+        genre:
+          type: string
+          enum: [Action, Drama, Sci-Fi, Comedy, Horror, Romance]
+    UpdateMovieDto:
+      type: object
+      properties:
+        description:
+          type: string
+        director:
+          type: string
+        genre:
+          type: string
+
+    Review:
+      type: object
+      properties:
+        id:
+          type: integer
+        reviewerName:
+          type: string
+        rating:
+          type: integer
+          minimum: 1
+          maximum: 5
+        content:
+          type: string
+    CreateReviewDto:
+      type: object
+      required:
+        - reviewerName
+        - rating
+        - content
+      properties:
+        reviewerName:
+          type: string
+        rating:
+          type: integer
+          minimum: 1
+          maximum: 5
+        content:
+          type: string
+    UpdateReviewDto:
+      type: object
+      properties:
+        rating:
+          type: integer
+        content:
+          type: string
+
+    Comment:
+      type: object
+      properties:
+        id:
+          type: integer
+        author:
+          type: string
+        content:
+          type: string
+    CreateCommentDto:
+      type: object
+      required:
+        - author
+        - content
+      properties:
+        author:
+          type: string
+        content:
+          type: string
+    UpdateCommentDto:
+      type: object
+      properties:
+        content:
+          type: string
+
+    ProblemDetails:
+      type: object
+      properties:
+        type:
+          type: string
+          format: uri
+        title:
+          type: string
+        status:
+          type: integer
+          format: int32
+        detail:
+          type: string
+        instance:
+          type: string
+          format: uri
+        errors:
+          type: object
+
+  responses:
+    SingleMovie:
+      description: A movie
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Movie"
+    MovieCreated:
+      description: Movie created
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Movie"
+    BadRequest:
+      description: Bad request
+    NotFound:
+      description: Resource not found
+    UnprocessableEntity:
+      description: Unprocessable entity
+
+  parameters:
+    movieId:
+      name: movieId
+      in: path
+      required: true
+      schema:
+        type: integer
+        minimum: 1
+      description: The unique identifier of the movie
+    reviewId:
+      name: reviewId
+      in: path
+      required: true
+      schema:
+        type: integer
+        minimum: 1
+      description: The unique identifier of the review
+    commentId:
+      name: commentId
+      in: path
+      required: true
+      schema:
+        type: integer
+        minimum: 1
+      description: The unique identifier of the comment
+
+tags:
+  - name: Movies
+    description: Operations related to movies
+  - name: Reviews
+    description: Operations related to reviews
+  - name: Comments
+    description: Operations related to comments
+
+externalDocs:
+  description: Find more info here
+  url: https://example.com/docs
