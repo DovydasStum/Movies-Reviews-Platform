@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using MoviesReviewsPlatform;
+using MoviesReviewsPlatform.Auth;
 using MoviesReviewsPlatform.Auth.Model;
 using MoviesReviewsPlatform.Data;
 using MoviesReviewsPlatform.Data.Entities;
@@ -21,6 +22,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<ForumDbContext>();
 builder.Services.AddValidatorsFromAssemblyContaining<Program>();
+builder.Services.AddTransient<JwtTokenService>();
+builder.Services.AddScoped<AuthDbSeeder>();
 
 builder.Services.AddFluentValidationAutoValidation(configuration =>
 {
@@ -60,8 +63,14 @@ app.AddReviewApi();
 app.AddCommentApi();
 
 
+app.AddAuthApi();
 app.UseAuthentication();
 app.UseAuthorization();
+
+
+using var scope = app.Services.CreateScope();
+var dbSeeder = scope.ServiceProvider.GetRequiredService<AuthDbSeeder>();
+await dbSeeder.SendAsync();
 
 app.Run();
 

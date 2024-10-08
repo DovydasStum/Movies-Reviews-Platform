@@ -1,6 +1,11 @@
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Text.Json;
 using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using MoviesReviewsPlatform.Auth.Model;
 using MoviesReviewsPlatform.Data;
 using MoviesReviewsPlatform.Data.Entities;
 using MoviesReviewsPlatform.Helpers;
@@ -56,7 +61,7 @@ namespace MoviesReviewsPlatform
             }).WithName("GetMovie");
 
             // Create movie
-            moviesGroup.MapPost("movies", async ([Validate] CreateMovieDto createMovieDto, 
+            moviesGroup.MapPost("movies", [Authorize(Roles = PlatformRoles.PlatformUser)] async ([Validate] CreateMovieDto createMovieDto, 
                 HttpContext httpContext, LinkGenerator linkGenerator, ForumDbContext dbContext) =>
             {
                 var movie = new Movie()
@@ -68,6 +73,7 @@ namespace MoviesReviewsPlatform
                     ReleaseYear = createMovieDto.ReleaseYear,
                     Duration = createMovieDto.Duration,
                     Genre = createMovieDto.Genre,
+                    UserId = httpContext.User.FindFirstValue(JwtRegisteredClaimNames.Sub)
                 };
 
                 dbContext.Movies.Add(movie);
@@ -82,12 +88,17 @@ namespace MoviesReviewsPlatform
             }).WithName("CreateMovie");
 
             // Update movie
-            moviesGroup.MapPut("movies/{movieId}", async (int movieId, [Validate] UpdateMovieDto movieDto, 
-                ForumDbContext dbContext) =>
+            moviesGroup.MapPut("movies/{movieId}", [Authorize(Roles = PlatformRoles.PlatformUser)] async (int movieId, [Validate] UpdateMovieDto movieDto, 
+                ForumDbContext dbContext, HttpContext httpContent) =>
             {
                 var movie = await dbContext.Movies.FirstOrDefaultAsync(m => m.Id == movieId);
                 if (movie == null)
                     return Results.NotFound();
+
+                if(!httpContent.User.IsInRole(PlatformRoles.Admin) && httpContent.User.FindFirstValue(JwtRegisteredClaimNames.Sub) != movie.UserId)
+                {
+                    return Results.NotFound();
+                }
 
                 movie.Name = movieDto.Name;
                 movie.Description = movieDto.Description;
@@ -188,7 +199,8 @@ namespace MoviesReviewsPlatform
                     Text = createReviewDto.Text,
                     Evaluation = createReviewDto.Evaluation,
                     Date = DateTime.UtcNow,
-                    Movie = movie
+                    Movie = movie,
+                    UserId = httpContext.User.FindFirstValue(JwtRegisteredClaimNames.Sub)
                 };
 
                 dbContext.Reviews.Add(review);
@@ -300,7 +312,8 @@ namespace MoviesReviewsPlatform
                 {
                     Text = createCommentDto.Text,
                     Date = DateTime.UtcNow,
-                    Review = review
+                    Review = review,
+                    UserId = httpContext.User.FindFirstValue(JwtRegisteredClaimNames.Sub)
                 };
 
                 dbContext.Comments.Add(comment);
