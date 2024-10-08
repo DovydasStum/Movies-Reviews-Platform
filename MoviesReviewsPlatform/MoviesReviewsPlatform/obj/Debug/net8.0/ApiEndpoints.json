@@ -1,0 +1,456 @@
+[
+  {
+    "ContainingType": "MoviesReviewsPlatform.Endpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CAddMovieApi\u003Eb__0_0",
+    "RelativePath": "api/movies",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PageNumber",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[MoviesReviewsPlatform.Data.Entities.MovieDto, MoviesReviewsPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "GetMovies"
+  },
+  {
+    "ContainingType": "MoviesReviewsPlatform.Endpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CAddMovieApi\u003Eb__0_2",
+    "RelativePath": "api/movies",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createMovieDto",
+        "Type": "CreateMovieDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "MoviesReviewsPlatform.Helpers.ResourceDto\u00601[[CreateMovieDto, MoviesReviewsPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 201
+      }
+    ],
+    "EndpointName": "CreateMovie"
+  },
+  {
+    "ContainingType": "MoviesReviewsPlatform.Endpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CAddMovieApi\u003Eb__0_1",
+    "RelativePath": "api/movies/{movieId}",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "movieId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "GetMovie"
+  },
+  {
+    "ContainingType": "MoviesReviewsPlatform.Endpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CAddMovieApi\u003Eb__0_3",
+    "RelativePath": "api/movies/{movieId}",
+    "HttpMethod": "PUT",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "movieId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "movieDto",
+        "Type": "UpdateMovieDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "EditMovie"
+  },
+  {
+    "ContainingType": "MoviesReviewsPlatform.Endpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CAddMovieApi\u003Eb__0_4",
+    "RelativePath": "api/movies/{movieId}",
+    "HttpMethod": "DELETE",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "movieId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "DeleteMovie"
+  },
+  {
+    "ContainingType": "MoviesReviewsPlatform.Endpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CAddReviewApi\u003Eb__2_0",
+    "RelativePath": "api/movies/{movieId}/reviews/",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PageNumber",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "movieId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "GetReviews"
+  },
+  {
+    "ContainingType": "MoviesReviewsPlatform.Endpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CAddReviewApi\u003Eb__2_2",
+    "RelativePath": "api/movies/{movieId}/reviews/",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "movieId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "createReviewDto",
+        "Type": "CreateReviewDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "CreateReview"
+  },
+  {
+    "ContainingType": "MoviesReviewsPlatform.Endpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CAddReviewApi\u003Eb__2_1",
+    "RelativePath": "api/movies/{movieId}/reviews/{reviewId}",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "movieId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "reviewId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "GetReview"
+  },
+  {
+    "ContainingType": "MoviesReviewsPlatform.Endpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CAddReviewApi\u003Eb__2_3",
+    "RelativePath": "api/movies/{movieId}/reviews/{reviewId}",
+    "HttpMethod": "PUT",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "movieId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "reviewId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updateReviewDto",
+        "Type": "UpdateReviewDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "UpdateReview"
+  },
+  {
+    "ContainingType": "MoviesReviewsPlatform.Endpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CAddReviewApi\u003Eb__2_4",
+    "RelativePath": "api/movies/{movieId}/reviews/{reviewId}",
+    "HttpMethod": "DELETE",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "movieId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "reviewId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "DeleteReview"
+  },
+  {
+    "ContainingType": "MoviesReviewsPlatform.Endpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CAddCommentApi\u003Eb__4_0",
+    "RelativePath": "api/movies/{movieId}/reviews/{reviewId}/comments/",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PageNumber",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "movieId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "reviewId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "GetComments"
+  },
+  {
+    "ContainingType": "MoviesReviewsPlatform.Endpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CAddCommentApi\u003Eb__4_2",
+    "RelativePath": "api/movies/{movieId}/reviews/{reviewId}/comments/",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "movieId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "reviewId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "createCommentDto",
+        "Type": "CreateCommentDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "CreateComment"
+  },
+  {
+    "ContainingType": "MoviesReviewsPlatform.Endpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CAddCommentApi\u003Eb__4_1",
+    "RelativePath": "api/movies/{movieId}/reviews/{reviewId}/comments/{commentId}",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "movieId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "reviewId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "commentId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "GetComment"
+  },
+  {
+    "ContainingType": "MoviesReviewsPlatform.Endpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CAddCommentApi\u003Eb__4_3",
+    "RelativePath": "api/movies/{movieId}/reviews/{reviewId}/comments/{commentId}",
+    "HttpMethod": "PUT",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "movieId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "reviewId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "commentId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updateCommentDto",
+        "Type": "UpdateCommentDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "UpdateComment"
+  },
+  {
+    "ContainingType": "MoviesReviewsPlatform.Endpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CAddCommentApi\u003Eb__4_4",
+    "RelativePath": "api/movies/{movieId}/reviews/{reviewId}/comments/{commentId}",
+    "HttpMethod": "DELETE",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "movieId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "reviewId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "commentId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "DeleteComment"
+  }
+]

@@ -1,13 +1,21 @@
 using FluentValidation;
 using FluentValidation.Results;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using MoviesReviewsPlatform;
+using MoviesReviewsPlatform.Auth.Model;
 using MoviesReviewsPlatform.Data;
 using MoviesReviewsPlatform.Data.Entities;
 using O9d.AspNet.FluentValidation;
 using SharpGrip.FluentValidation.AutoValidation.Endpoints.Extensions;
 using SharpGrip.FluentValidation.AutoValidation.Endpoints.Results;
 using SharpGrip.FluentValidation.AutoValidation.Shared.Extensions;
+using System.IdentityModel.Tokens.Jwt;
+using System.Text;
+
+JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +27,27 @@ builder.Services.AddFluentValidationAutoValidation(configuration =>
     configuration.OverrideDefaultResultFactoryWith<ProblemDetailsResultFactory>();
 });
 
+// Authorization
+builder.Services.AddIdentity<PlatformRestUser, IdentityRole>()
+    .AddEntityFrameworkStores<ForumDbContext>()
+    .AddDefaultTokenProviders();
+
+// Authorization: token validation
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options =>
+{
+    options.TokenValidationParameters.ValidAudience = builder.Configuration["Jwt:ValidAudience"];
+    options.TokenValidationParameters.ValidIssuer = builder.Configuration["Jwt:ValidIssuer"];
+    options.TokenValidationParameters.IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Secret"]));
+});
+
+builder.Services.AddAuthorization();
+
+
 var app = builder.Build();
 
 // Movies api call
@@ -29,6 +58,10 @@ app.AddReviewApi();
 
 // Comments api call
 app.AddCommentApi();
+
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.Run();
 

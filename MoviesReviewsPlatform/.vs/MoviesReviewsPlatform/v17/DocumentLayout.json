@@ -1,26 +1,34 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Studies\\IV course\\Saitynai\\Repository\\Rider\\MoviesReviewsPlatform\\",
+  "WorkspaceRootPath": "D:\\Studies\\IV course\\Saitynai\\Platform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0B8C871D-F619-4410-A6DA-B42F0642BEB4}|MoviesReviewsPlatform\\MoviesReviewsPlatform.csproj|d:\\studies\\iv course\\saitynai\\repository\\rider\\moviesreviewsplatform\\moviesreviewsplatform\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0B8C871D-F619-4410-A6DA-B42F0642BEB4}|MoviesReviewsPlatform\\MoviesReviewsPlatform.csproj|solutionrelative:moviesreviewsplatform\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0B8C871D-F619-4410-A6DA-B42F0642BEB4}|MoviesReviewsPlatform\\MoviesReviewsPlatform.csproj|d:\\studies\\iv course\\saitynai\\repository\\rider\\moviesreviewsplatform\\moviesreviewsplatform\\data\\entities\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0B8C871D-F619-4410-A6DA-B42F0642BEB4}|MoviesReviewsPlatform\\MoviesReviewsPlatform.csproj|solutionrelative:moviesreviewsplatform\\data\\entities\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0B8C871D-F619-4410-A6DA-B42F0642BEB4}|MoviesReviewsPlatform\\MoviesReviewsPlatform.csproj|d:\\studies\\iv course\\saitynai\\repository\\rider\\moviesreviewsplatform\\moviesreviewsplatform\\data\\entities\\movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0B8C871D-F619-4410-A6DA-B42F0642BEB4}|MoviesReviewsPlatform\\MoviesReviewsPlatform.csproj|solutionrelative:moviesreviewsplatform\\data\\entities\\movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0B8C871D-F619-4410-A6DA-B42F0642BEB4}|MoviesReviewsPlatform\\MoviesReviewsPlatform.csproj|d:\\studies\\iv course\\saitynai\\repository\\rider\\moviesreviewsplatform\\moviesreviewsplatform\\data\\entities\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{0B8C871D-F619-4410-A6DA-B42F0642BEB4}|MoviesReviewsPlatform\\MoviesReviewsPlatform.csproj|d:\\studies\\iv course\\saitynai\\platform\\moviesreviewsplatform\\moviesreviewsplatform\\moviesreviewsplatform\\data\\entities\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0B8C871D-F619-4410-A6DA-B42F0642BEB4}|MoviesReviewsPlatform\\MoviesReviewsPlatform.csproj|solutionrelative:moviesreviewsplatform\\data\\entities\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0B8C871D-F619-4410-A6DA-B42F0642BEB4}|MoviesReviewsPlatform\\MoviesReviewsPlatform.csproj|d:\\studies\\iv course\\saitynai\\repository\\rider\\moviesreviewsplatform\\moviesreviewsplatform\\endpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0B8C871D-F619-4410-A6DA-B42F0642BEB4}|MoviesReviewsPlatform\\MoviesReviewsPlatform.csproj|solutionrelative:moviesreviewsplatform\\endpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0B8C871D-F619-4410-A6DA-B42F0642BEB4}|MoviesReviewsPlatform\\MoviesReviewsPlatform.csproj|d:\\studies\\iv course\\saitynai\\platform\\moviesreviewsplatform\\moviesreviewsplatform\\moviesreviewsplatform\\data\\forumdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B8C871D-F619-4410-A6DA-B42F0642BEB4}|MoviesReviewsPlatform\\MoviesReviewsPlatform.csproj|solutionrelative:moviesreviewsplatform\\data\\forumdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B8C871D-F619-4410-A6DA-B42F0642BEB4}|MoviesReviewsPlatform\\MoviesReviewsPlatform.csproj|d:\\studies\\iv course\\saitynai\\platform\\moviesreviewsplatform\\moviesreviewsplatform\\moviesreviewsplatform\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B8C871D-F619-4410-A6DA-B42F0642BEB4}|MoviesReviewsPlatform\\MoviesReviewsPlatform.csproj|solutionrelative:moviesreviewsplatform\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B8C871D-F619-4410-A6DA-B42F0642BEB4}|MoviesReviewsPlatform\\MoviesReviewsPlatform.csproj|d:\\studies\\iv course\\saitynai\\platform\\moviesreviewsplatform\\moviesreviewsplatform\\moviesreviewsplatform\\data\\entities\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B8C871D-F619-4410-A6DA-B42F0642BEB4}|MoviesReviewsPlatform\\MoviesReviewsPlatform.csproj|solutionrelative:moviesreviewsplatform\\data\\entities\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B8C871D-F619-4410-A6DA-B42F0642BEB4}|MoviesReviewsPlatform\\MoviesReviewsPlatform.csproj|d:\\studies\\iv course\\saitynai\\platform\\moviesreviewsplatform\\moviesreviewsplatform\\moviesreviewsplatform\\data\\entities\\movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B8C871D-F619-4410-A6DA-B42F0642BEB4}|MoviesReviewsPlatform\\MoviesReviewsPlatform.csproj|solutionrelative:moviesreviewsplatform\\data\\entities\\movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B8C871D-F619-4410-A6DA-B42F0642BEB4}|MoviesReviewsPlatform\\MoviesReviewsPlatform.csproj|d:\\studies\\iv course\\saitynai\\platform\\moviesreviewsplatform\\moviesreviewsplatform\\moviesreviewsplatform\\auth\\model\\platformrestuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B8C871D-F619-4410-A6DA-B42F0642BEB4}|MoviesReviewsPlatform\\MoviesReviewsPlatform.csproj|solutionrelative:moviesreviewsplatform\\auth\\model\\platformrestuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B8C871D-F619-4410-A6DA-B42F0642BEB4}|MoviesReviewsPlatform\\MoviesReviewsPlatform.csproj|d:\\studies\\iv course\\saitynai\\platform\\moviesreviewsplatform\\moviesreviewsplatform\\moviesreviewsplatform\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{0B8C871D-F619-4410-A6DA-B42F0642BEB4}|MoviesReviewsPlatform\\MoviesReviewsPlatform.csproj|solutionrelative:moviesreviewsplatform\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,67 +38,98 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Review.cs",
-              "DocumentMoniker": "D:\\Studies\\IV course\\Saitynai\\Repository\\Rider\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\Data\\Entities\\Review.cs",
-              "RelativeDocumentMoniker": "MoviesReviewsPlatform\\Data\\Entities\\Review.cs",
-              "ToolTip": "D:\\Studies\\IV course\\Saitynai\\Repository\\Rider\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\Data\\Entities\\Review.cs",
-              "RelativeToolTip": "MoviesReviewsPlatform\\Data\\Entities\\Review.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAzwAwAAAAAAAAAAAAAAA==",
+              "Title": "ForumDbContext.cs",
+              "DocumentMoniker": "D:\\Studies\\IV course\\Saitynai\\Platform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\Data\\ForumDbContext.cs",
+              "RelativeDocumentMoniker": "MoviesReviewsPlatform\\Data\\ForumDbContext.cs",
+              "ToolTip": "D:\\Studies\\IV course\\Saitynai\\Platform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\Data\\ForumDbContext.cs",
+              "RelativeToolTip": "MoviesReviewsPlatform\\Data\\ForumDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-18T12:04:42.65Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Movie.cs",
-              "DocumentMoniker": "D:\\Studies\\IV course\\Saitynai\\Repository\\Rider\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\Data\\Entities\\Movie.cs",
-              "RelativeDocumentMoniker": "MoviesReviewsPlatform\\Data\\Entities\\Movie.cs",
-              "ToolTip": "D:\\Studies\\IV course\\Saitynai\\Repository\\Rider\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\Data\\Entities\\Movie.cs",
-              "RelativeToolTip": "MoviesReviewsPlatform\\Data\\Entities\\Movie.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-18T12:04:08.444Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Comment.cs",
-              "DocumentMoniker": "D:\\Studies\\IV course\\Saitynai\\Repository\\Rider\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\Data\\Entities\\Comment.cs",
-              "RelativeDocumentMoniker": "MoviesReviewsPlatform\\Data\\Entities\\Comment.cs",
-              "ToolTip": "D:\\Studies\\IV course\\Saitynai\\Repository\\Rider\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\Data\\Entities\\Comment.cs",
-              "RelativeToolTip": "MoviesReviewsPlatform\\Data\\Entities\\Comment.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-18T12:03:45.275Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Endpoints.cs",
-              "DocumentMoniker": "D:\\Studies\\IV course\\Saitynai\\Repository\\Rider\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\Endpoints.cs",
-              "RelativeDocumentMoniker": "MoviesReviewsPlatform\\Endpoints.cs",
-              "ToolTip": "D:\\Studies\\IV course\\Saitynai\\Repository\\Rider\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\Endpoints.cs",
-              "RelativeToolTip": "MoviesReviewsPlatform\\Endpoints.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-18T12:01:28.558Z"
+              "WhenOpened": "2024-10-08T09:20:39.225Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Studies\\IV course\\Saitynai\\Repository\\Rider\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\Program.cs",
-              "RelativeDocumentMoniker": "MoviesReviewsPlatform\\Program.cs",
-              "ToolTip": "D:\\Studies\\IV course\\Saitynai\\Repository\\Rider\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\Program.cs",
-              "RelativeToolTip": "MoviesReviewsPlatform\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Title": "Comment.cs",
+              "DocumentMoniker": "D:\\Studies\\IV course\\Saitynai\\Platform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\Data\\Entities\\Comment.cs",
+              "RelativeDocumentMoniker": "MoviesReviewsPlatform\\Data\\Entities\\Comment.cs",
+              "ToolTip": "D:\\Studies\\IV course\\Saitynai\\Platform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\Data\\Entities\\Comment.cs",
+              "RelativeToolTip": "MoviesReviewsPlatform\\Data\\Entities\\Comment.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-18T12:01:10.402Z"
+              "WhenOpened": "2024-10-08T09:19:43.761Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Review.cs",
+              "DocumentMoniker": "D:\\Studies\\IV course\\Saitynai\\Platform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\Data\\Entities\\Review.cs",
+              "RelativeDocumentMoniker": "MoviesReviewsPlatform\\Data\\Entities\\Review.cs",
+              "ToolTip": "D:\\Studies\\IV course\\Saitynai\\Platform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\Data\\Entities\\Review.cs",
+              "RelativeToolTip": "MoviesReviewsPlatform\\Data\\Entities\\Review.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-08T09:19:31.246Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Movie.cs",
+              "DocumentMoniker": "D:\\Studies\\IV course\\Saitynai\\Platform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\Data\\Entities\\Movie.cs",
+              "RelativeDocumentMoniker": "MoviesReviewsPlatform\\Data\\Entities\\Movie.cs",
+              "ToolTip": "D:\\Studies\\IV course\\Saitynai\\Platform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\Data\\Entities\\Movie.cs",
+              "RelativeToolTip": "MoviesReviewsPlatform\\Data\\Entities\\Movie.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-08T09:18:13.197Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Studies\\IV course\\Saitynai\\Platform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\appsettings.json",
+              "RelativeDocumentMoniker": "MoviesReviewsPlatform\\appsettings.json",
+              "ToolTip": "D:\\Studies\\IV course\\Saitynai\\Platform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\appsettings.json",
+              "RelativeToolTip": "MoviesReviewsPlatform\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-10-08T09:09:30.583Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "PlatformRestUser.cs",
+              "DocumentMoniker": "D:\\Studies\\IV course\\Saitynai\\Platform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\Auth\\Model\\PlatformRestUser.cs",
+              "RelativeDocumentMoniker": "MoviesReviewsPlatform\\Auth\\Model\\PlatformRestUser.cs",
+              "ToolTip": "D:\\Studies\\IV course\\Saitynai\\Platform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\Auth\\Model\\PlatformRestUser.cs",
+              "RelativeToolTip": "MoviesReviewsPlatform\\Auth\\Model\\PlatformRestUser.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-08T09:01:54.981Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Studies\\IV course\\Saitynai\\Platform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\Program.cs",
+              "RelativeDocumentMoniker": "MoviesReviewsPlatform\\Program.cs",
+              "ToolTip": "D:\\Studies\\IV course\\Saitynai\\Platform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\Program.cs",
+              "RelativeToolTip": "MoviesReviewsPlatform\\Program.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAACMAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-18T12:01:10.402Z",
+              "EditorCaption": ""
             }
           ]
         }

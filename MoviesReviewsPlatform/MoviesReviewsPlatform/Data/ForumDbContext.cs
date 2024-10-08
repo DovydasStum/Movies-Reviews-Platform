@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using MoviesReviewsPlatform.Auth.Model;
 using MoviesReviewsPlatform.Data.Entities;
 
 namespace MoviesReviewsPlatform.Data
 {
-    public class ForumDbContext : DbContext
+    public class ForumDbContext : IdentityDbContext<PlatformRestUser>
     {
         private readonly IConfiguration _configuration;
         public DbSet<Movie> Movies { get; set; }
