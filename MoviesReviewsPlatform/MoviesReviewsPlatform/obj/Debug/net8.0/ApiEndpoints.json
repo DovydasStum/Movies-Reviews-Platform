@@ -1,5 +1,81 @@
 [
   {
+    "ContainingType": "MoviesReviewsPlatform.Auth.AuthEndpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CAddAuthApi\u003Eb__0_2",
+    "RelativePath": "api/accessToken",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MoviesReviewsPlatform.Auth.AuthEndpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CAddAuthApi\u003Eb__0_0",
+    "RelativePath": "api/accounts",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "registerUserDto",
+        "Type": "MoviesReviewsPlatform.Auth.RegisterUserDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MoviesReviewsPlatform.Auth.AuthEndpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CAddAuthApi\u003Eb__0_1",
+    "RelativePath": "api/login",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "loginDto",
+        "Type": "MoviesReviewsPlatform.Auth.LoginDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MoviesReviewsPlatform.Auth.AuthEndpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CAddAuthApi\u003Eb__0_3",
+    "RelativePath": "api/logout",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "MoviesReviewsPlatform.Endpoints\u002B\u003C\u003Ec",
     "Method": "\u003CAddMovieApi\u003Eb__0_0",
     "RelativePath": "api/movies",

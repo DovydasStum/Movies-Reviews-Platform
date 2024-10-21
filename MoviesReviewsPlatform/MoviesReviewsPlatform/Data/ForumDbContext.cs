@@ -11,6 +11,7 @@ namespace MoviesReviewsPlatform.Data
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<Session> Sessions { get; set; }
 
         public ForumDbContext(IConfiguration configuration)
         {

@@ -23,6 +23,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ForumDbContext>();
 builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 builder.Services.AddTransient<JwtTokenService>();
+builder.Services.AddTransient<SessionService>();
 builder.Services.AddScoped<AuthDbSeeder>();
 
 builder.Services.AddFluentValidationAutoValidation(configuration =>
@@ -35,7 +36,7 @@ builder.Services.AddIdentity<PlatformRestUser, IdentityRole>()
     .AddEntityFrameworkStores<ForumDbContext>()
     .AddDefaultTokenProviders();
 
-// Authorization: token validation
+// Authentication: token validation
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -45,7 +46,7 @@ builder.Services.AddAuthentication(options =>
 {
     options.TokenValidationParameters.ValidAudience = builder.Configuration["Jwt:ValidAudience"];
     options.TokenValidationParameters.ValidIssuer = builder.Configuration["Jwt:ValidIssuer"];
-    options.TokenValidationParameters.IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Secret"]));
+    options.TokenValidationParameters.IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Secret"]));
 });
 
 builder.Services.AddAuthorization();
@@ -69,8 +70,9 @@ app.UseAuthorization();
 
 
 using var scope = app.Services.CreateScope();
+//var dbContext = scope.ServiceProvider.GetRequiredService<ForumDbContext>();
 var dbSeeder = scope.ServiceProvider.GetRequiredService<AuthDbSeeder>();
-await dbSeeder.SendAsync();
+await dbSeeder.SeedAsync();
 
 app.Run();
 

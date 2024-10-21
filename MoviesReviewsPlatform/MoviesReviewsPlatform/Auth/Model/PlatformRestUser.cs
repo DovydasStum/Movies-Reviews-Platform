@@ -4,6 +4,6 @@ namespace MoviesReviewsPlatform.Auth.Model
 {
     public class PlatformRestUser :IdentityUser
     {
-        public bool ForceRelogin { get; set; }
+        
     }
 }

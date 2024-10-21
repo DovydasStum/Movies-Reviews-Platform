@@ -14,7 +14,7 @@ namespace MoviesReviewsPlatform.Auth
             _roleManager = roleManager;
         }
 
-        public async Task SendAsync()
+        public async Task SeedAsync()
         {
             await AddDefaultRoles();
             await AddAdminUser();

@@ -8,8 +8,8 @@ namespace MoviesReviewsPlatform.Auth
     public class JwtTokenService
     {
         private readonly SymmetricSecurityKey _authSigningKey;
-        private readonly string _issuer;
-        private readonly string _audience;
+        private readonly string? _issuer;
+        private readonly string? _audience;
 
         public JwtTokenService(IConfiguration configuration)
         {
@@ -42,19 +42,20 @@ namespace MoviesReviewsPlatform.Auth
         }
 
 
-        public string CreateRefreshToken(string userId)
+        public string CreateRefreshToken(Guid sessionId, string userId, DateTime expiresAt)
         {
             var authClaims = new List<Claim>()
             {
                 new (JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new (JwtRegisteredClaimNames.Sub, userId)
+                new (JwtRegisteredClaimNames.Sub, userId),
+                new ("SessionId", sessionId.ToString())
             };
 
             var token = new JwtSecurityToken
             (
                 issuer: _issuer,
                 audience: _audience,
-                expires: DateTime.UtcNow.AddHours(24),
+                expires: expiresAt,
                 claims: authClaims,
                 signingCredentials: new SigningCredentials(_authSigningKey, SecurityAlgorithms.HmacSha256)
             );
@@ -68,14 +69,14 @@ namespace MoviesReviewsPlatform.Auth
 
             try
             {
-                var tokenHandler = new JwtSecurityTokenHandler();
+                var tokenHandler = new JwtSecurityTokenHandler() { MapInboundClaims = false };
 
                 var validationParameters = new TokenValidationParameters
                 {
                     ValidIssuer = _issuer,
                     ValidAudience = _audience,
                     IssuerSigningKey = _authSigningKey,
-                    ValidateLifetime = true,
+                    ValidateLifetime = true
                 };
 
                 claims = tokenHandler.ValidateToken(refreshToken, validationParameters, out _);
