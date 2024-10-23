@@ -66,6 +66,12 @@ namespace MoviesReviewsPlatform
             moviesGroup.MapPost("movies", [Authorize(Roles = PlatformRoles.PlatformUser)] async ([Validate] CreateMovieDto createMovieDto, 
                 HttpContext httpContext, LinkGenerator linkGenerator, ForumDbContext dbContext) =>
             {
+                // Only admin can add movie
+                if (!httpContext.User.IsInRole(PlatformRoles.Admin))
+                {
+                    return Results.Forbid();
+                }
+
                 var movie = new Movie()
                 {
                     Name = createMovieDto.Name,
@@ -91,15 +97,15 @@ namespace MoviesReviewsPlatform
 
             // Update movie
             moviesGroup.MapPut("movies/{movieId}", [Authorize] async (int movieId, [Validate] UpdateMovieDto movieDto, 
-                ForumDbContext dbContext, HttpContext httpContent) =>
+                ForumDbContext dbContext, HttpContext httpContext) =>
             {
                 var movie = await dbContext.Movies.FirstOrDefaultAsync(m => m.Id == movieId);
                 if (movie == null)
                     return Results.NotFound();
 
-                if(!httpContent.User.IsInRole(PlatformRoles.Admin) && httpContent.User.FindFirstValue(JwtRegisteredClaimNames.Sub) != movie.UserId)
+                if(!httpContext.User.IsInRole(PlatformRoles.Admin) && httpContext.User.FindFirstValue(JwtRegisteredClaimNames.Sub) != movie.UserId)
                 {
-                    return Results.NotFound();
+                    return Results.Forbid();
                 }
 
                 movie.Name = movieDto.Name;

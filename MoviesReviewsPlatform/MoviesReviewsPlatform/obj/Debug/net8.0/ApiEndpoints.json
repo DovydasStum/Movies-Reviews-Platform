@@ -121,11 +121,9 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "MoviesReviewsPlatform.Helpers.ResourceDto\u00601[[CreateMovieDto, MoviesReviewsPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "application/json"
-        ],
-        "StatusCode": 201
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
       }
     ],
     "EndpointName": "CreateMovie"

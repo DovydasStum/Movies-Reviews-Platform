@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using MoviesReviewsPlatform.Auth.Model;
 using MoviesReviewsPlatform.Data;
 using System.IdentityModel.Tokens.Jwt;
@@ -14,7 +15,8 @@ public static class AuthEndpoints
     public static void AddAuthApi(this WebApplication app)
     {
         // Register
-        app.MapPost("api/accounts", async (UserManager<PlatformRestUser> userManager, RegisterUserDto registerUserDto) =>
+        app.MapPost("api/accounts", async (UserManager<PlatformRestUser> userManager, RegisterUserDto registerUserDto,
+            ForumDbContext _dbContext) =>
         {
             // Check if user exists
             var user = await userManager.FindByNameAsync(registerUserDto.Username);
@@ -30,13 +32,33 @@ public static class AuthEndpoints
             };
 
             // TODO: wrap in one transaction
+            //var createUserResult = await userManager.CreateAsync(newUser, registerUserDto.Password);
+            //if (!createUserResult.Succeeded)
+            //{
+            //    return Results.UnprocessableEntity();
+            //}
+
+            //await userManager.AddToRoleAsync(newUser, PlatformRoles.PlatformUser);
+            // ----
+            // Transaction
+            using var transaction = await _dbContext.Database.BeginTransactionAsync();
+
             var createUserResult = await userManager.CreateAsync(newUser, registerUserDto.Password);
             if (!createUserResult.Succeeded)
             {
-                return Results.UnprocessableEntity();
+                var errors = createUserResult.Errors.Select(e => e.Description).ToList();
+                return Results.UnprocessableEntity(new { Errors = errors });
             }
 
-            await userManager.AddToRoleAsync(newUser, PlatformRoles.PlatformUser);
+            var roleResult = await userManager.AddToRoleAsync(newUser, PlatformRoles.PlatformUser);
+            if (!roleResult.Succeeded)
+            {
+                await transaction.RollbackAsync(); // Rollback in case role assignment fails
+                var errors = roleResult.Errors.Select(e => e.Description).ToList();
+                return Results.UnprocessableEntity(new { Errors = errors });
+            }
+
+            await transaction.CommitAsync();
             // ----
 
             return Results.Created("api/login", new UserDto(newUser.Id, newUser.UserName, newUser.Email));
@@ -72,7 +94,7 @@ public static class AuthEndpoints
                 HttpOnly = true,
                 SameSite = SameSiteMode.Lax,
                 Expires = expiresAt,
-                //Secure = false (should be true)
+                Secure  = false
             };
 
             httpContext.Response.Cookies.Append("RefreshToken", refreshToken, cookieOptions);
@@ -87,31 +109,31 @@ public static class AuthEndpoints
         {
             if (!httpContext.Request.Cookies.TryGetValue("RefreshToken", out var refreshToken))
             {
-                return Results.UnprocessableEntity();
+                return Results.UnprocessableEntity("1");
             }                    
 
-            if (jwtTokenService.TryParseRefreshToken(refreshToken, out var claims)) // token no longer valid
+            if (!jwtTokenService.TryParseRefreshToken(refreshToken, out var claims)) // token no longer valid
             {
-                return Results.UnprocessableEntity();
+                return Results.UnprocessableEntity("2");
             }
 
             var sessionId = claims.FindFirstValue("SessionId");
             if (string.IsNullOrWhiteSpace(sessionId))
             {
-                return Results.UnprocessableEntity();
+                return Results.UnprocessableEntity("3");
             }
 
             var sessionIdAsGuid = Guid.Parse(sessionId);
             if (!await sessionService.IsSessionValidAsync(sessionIdAsGuid, refreshToken))
             {
-                return Results.UnprocessableEntity();
+                return Results.UnprocessableEntity("4");
             }
 
             var userId = claims.FindFirstValue(JwtRegisteredClaimNames.Sub);
             var user = await userManager.FindByIdAsync(userId);
             if (user == null)
             {
-                return Results.UnprocessableEntity();
+                return Results.UnprocessableEntity("5");
             }
 
             var roles = await userManager.GetRolesAsync(user);
@@ -124,7 +146,7 @@ public static class AuthEndpoints
                 HttpOnly = true,
                 SameSite = SameSiteMode.Lax,
                 Expires = expiresAt,
-                //Secure = false (should be true)
+                Secure = false
             };
 
             httpContext.Response.Cookies.Append("RefreshToken", newRefreshToken, cookieOptions);
@@ -145,7 +167,7 @@ public static class AuthEndpoints
                         return Results.UnprocessableEntity();
                     }
 
-                    if (jwtTokenService.TryParseRefreshToken(refreshToken, out var claims)) // token no longer valid
+                    if (!jwtTokenService.TryParseRefreshToken(refreshToken, out var claims)) // token no longer valid
                     {
                         return Results.UnprocessableEntity();
                     }
