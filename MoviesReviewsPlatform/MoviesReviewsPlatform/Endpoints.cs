@@ -1,6 +1,13 @@
+using System.IdentityModel.Tokens.Jwt;
+using System.Net.Http;
+using System.Security.Claims;
 using System.Text.Json;
 using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization.Infrastructure;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using MoviesReviewsPlatform.Auth.Model;
 using MoviesReviewsPlatform.Data;
 using MoviesReviewsPlatform.Data.Entities;
 using MoviesReviewsPlatform.Helpers;
@@ -56,9 +63,15 @@ namespace MoviesReviewsPlatform
             }).WithName("GetMovie");
 
             // Create movie
-            moviesGroup.MapPost("movies", async ([Validate] CreateMovieDto createMovieDto, 
+            moviesGroup.MapPost("movies", [Authorize(Roles = PlatformRoles.PlatformUser)] async ([Validate] CreateMovieDto createMovieDto, 
                 HttpContext httpContext, LinkGenerator linkGenerator, ForumDbContext dbContext) =>
             {
+                // Only admin can add movie
+                if (!httpContext.User.IsInRole(PlatformRoles.Admin))
+                {
+                    return Results.Forbid();
+                }
+
                 var movie = new Movie()
                 {
                     Name = createMovieDto.Name,
@@ -68,6 +81,7 @@ namespace MoviesReviewsPlatform
                     ReleaseYear = createMovieDto.ReleaseYear,
                     Duration = createMovieDto.Duration,
                     Genre = createMovieDto.Genre,
+                    UserId = httpContext.User.FindFirstValue(JwtRegisteredClaimNames.Sub)
                 };
 
                 dbContext.Movies.Add(movie);
@@ -82,12 +96,17 @@ namespace MoviesReviewsPlatform
             }).WithName("CreateMovie");
 
             // Update movie
-            moviesGroup.MapPut("movies/{movieId}", async (int movieId, [Validate] UpdateMovieDto movieDto, 
-                ForumDbContext dbContext) =>
+            moviesGroup.MapPut("movies/{movieId}", [Authorize] async (int movieId, [Validate] UpdateMovieDto movieDto, 
+                ForumDbContext dbContext, HttpContext httpContext) =>
             {
                 var movie = await dbContext.Movies.FirstOrDefaultAsync(m => m.Id == movieId);
                 if (movie == null)
                     return Results.NotFound();
+
+                if(!httpContext.User.IsInRole(PlatformRoles.Admin) && httpContext.User.FindFirstValue(JwtRegisteredClaimNames.Sub) != movie.UserId)
+                {
+                    return Results.Forbid();
+                }
 
                 movie.Name = movieDto.Name;
                 movie.Description = movieDto.Description;
@@ -105,11 +124,16 @@ namespace MoviesReviewsPlatform
             }).WithName("EditMovie");
 
             // Delete movie
-            moviesGroup.MapDelete("movies/{movieId}", async (int movieId, ForumDbContext dbContext) =>
+            moviesGroup.MapDelete("movies/{movieId}", [Authorize] async (int movieId, ForumDbContext dbContext, HttpContext httpContext) =>
             {
                 var movie = await dbContext.Movies.FirstOrDefaultAsync(m => m.Id == movieId);
                 if (movie == null)
                     return Results.NotFound();
+
+                if (!httpContext.User.IsInRole(PlatformRoles.Admin) && httpContext.User.FindFirstValue(JwtRegisteredClaimNames.Sub) != movie.UserId)
+                {
+                    return Results.Forbid();
+                }
 
                 dbContext.Remove(movie);
                 await dbContext.SaveChangesAsync();
@@ -177,7 +201,7 @@ namespace MoviesReviewsPlatform
             }).WithName("GetReview");
 
             // Create a new review
-            reviewsGroup.MapPost("", async (int movieId, [Validate] CreateReviewDto createReviewDto, 
+            reviewsGroup.MapPost("", [Authorize(Roles = PlatformRoles.PlatformUser)] async (int movieId, [Validate] CreateReviewDto createReviewDto, 
                 ForumDbContext dbContext, LinkGenerator linkGenerator, HttpContext httpContext) =>
             {
                 var movie = await dbContext.Movies.FirstOrDefaultAsync(m => m.Id == movieId);
@@ -188,7 +212,8 @@ namespace MoviesReviewsPlatform
                     Text = createReviewDto.Text,
                     Evaluation = createReviewDto.Evaluation,
                     Date = DateTime.UtcNow,
-                    Movie = movie
+                    Movie = movie,
+                    UserId = httpContext.User.FindFirstValue(JwtRegisteredClaimNames.Sub)
                 };
 
                 dbContext.Reviews.Add(review);
@@ -201,12 +226,17 @@ namespace MoviesReviewsPlatform
             }).WithName("CreateReview");
 
             // Update a review
-            reviewsGroup.MapPut("{reviewId}", async (int movieId, int reviewId, 
-                [Validate] UpdateReviewDto updateReviewDto, ForumDbContext dbContext) =>
+            reviewsGroup.MapPut("{reviewId}", [Authorize] async (int movieId, int reviewId, 
+                [Validate] UpdateReviewDto updateReviewDto, ForumDbContext dbContext, HttpContext httpContext) =>
             {
                 var review = await dbContext.Reviews.Include(r => r.Movie)
                     .FirstOrDefaultAsync(r => r.Id == reviewId && r.Movie.Id == movieId);
                 if (review == null) return Results.NotFound();
+
+                if (!httpContext.User.IsInRole(PlatformRoles.Admin) && httpContext.User.FindFirstValue(JwtRegisteredClaimNames.Sub) != review.UserId)
+                {
+                    return Results.Forbid();
+                }
 
                 review.Text = updateReviewDto.Text;
                 review.Evaluation = updateReviewDto.Evaluation;
@@ -219,11 +249,16 @@ namespace MoviesReviewsPlatform
             }).WithName("UpdateReview");
 
             // Delete a review
-            reviewsGroup.MapDelete("{reviewId}", async (int movieId, int reviewId, ForumDbContext dbContext) =>
+            reviewsGroup.MapDelete("{reviewId}", [Authorize] async (int movieId, int reviewId, ForumDbContext dbContext, HttpContext httpContext) =>
             {
                 var review = await dbContext.Reviews.Include(r => r.Movie)
                     .FirstOrDefaultAsync(r => r.Id == reviewId && r.Movie.Id == movieId);
                 if (review == null) return Results.NotFound();
+
+                if (!httpContext.User.IsInRole(PlatformRoles.Admin) && httpContext.User.FindFirstValue(JwtRegisteredClaimNames.Sub) != review.UserId)
+                {
+                    return Results.Forbid();
+                }
 
                 dbContext.Reviews.Remove(review);
                 await dbContext.SaveChangesAsync();
@@ -288,7 +323,7 @@ namespace MoviesReviewsPlatform
             }).WithName("GetComment");
 
             // Create a new comment
-            commentsGroup.MapPost("", async (int movieId, int reviewId, 
+            commentsGroup.MapPost("", [Authorize(Roles = PlatformRoles.PlatformUser)] async (int movieId, int reviewId, 
                 [Validate] CreateCommentDto createCommentDto, ForumDbContext dbContext, LinkGenerator linkGenerator, 
                 HttpContext httpContext) =>
             {
@@ -300,7 +335,8 @@ namespace MoviesReviewsPlatform
                 {
                     Text = createCommentDto.Text,
                     Date = DateTime.UtcNow,
-                    Review = review
+                    Review = review,
+                    UserId = httpContext.User.FindFirstValue(JwtRegisteredClaimNames.Sub)
                 };
 
                 dbContext.Comments.Add(comment);
@@ -313,12 +349,17 @@ namespace MoviesReviewsPlatform
             }).WithName("CreateComment");
 
             // Update a comment
-            commentsGroup.MapPut("{commentId}", async (int movieId, int reviewId, int commentId, 
-                [Validate] UpdateCommentDto updateCommentDto, ForumDbContext dbContext) =>
+            commentsGroup.MapPut("{commentId}", [Authorize] async (int movieId, int reviewId, int commentId, 
+                [Validate] UpdateCommentDto updateCommentDto, ForumDbContext dbContext, HttpContext httpContext) =>
             {
                 var comment = await dbContext.Comments.Include(c => c.Review).ThenInclude(r => r.Movie)
                     .FirstOrDefaultAsync(c => c.Id == commentId && c.Review.Id == reviewId && c.Review.Movie.Id == movieId);
                 if (comment == null) return Results.NotFound();
+
+                if (!httpContext.User.IsInRole(PlatformRoles.Admin) && httpContext.User.FindFirstValue(JwtRegisteredClaimNames.Sub) != comment.UserId)
+                {
+                    return Results.Forbid();
+                }
 
                 comment.Text = updateCommentDto.Text;
                 comment.Date = DateTime.UtcNow; // Update timestamp
@@ -330,11 +371,17 @@ namespace MoviesReviewsPlatform
             }).WithName("UpdateComment");
 
             // Delete a comment
-            commentsGroup.MapDelete("{commentId}", async (int movieId, int reviewId, int commentId, ForumDbContext dbContext) =>
+            commentsGroup.MapDelete("{commentId}", [Authorize] async (int movieId, int reviewId, int commentId, ForumDbContext dbContext,
+                HttpContext httpContext) =>
             {
                 var comment = await dbContext.Comments.Include(c => c.Review).ThenInclude(r => r.Movie)
                     .FirstOrDefaultAsync(c => c.Id == commentId && c.Review.Id == reviewId && c.Review.Movie.Id == movieId);
                 if (comment == null) return Results.NotFound();
+
+                if (!httpContext.User.IsInRole(PlatformRoles.Admin) && httpContext.User.FindFirstValue(JwtRegisteredClaimNames.Sub) != comment.UserId)
+                {
+                    return Results.Forbid();
+                }
 
                 dbContext.Comments.Remove(comment);
                 await dbContext.SaveChangesAsync();

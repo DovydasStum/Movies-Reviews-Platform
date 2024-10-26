@@ -1,4 +1,6 @@
-﻿namespace MoviesReviewsPlatform.Data.Entities
+﻿using MoviesReviewsPlatform.Auth.Model;
+
+namespace MoviesReviewsPlatform.Data.Entities
 {
     public class Review
     {
@@ -10,6 +12,10 @@
         public required Movie Movie { get; set; }
         public int MovieId { get; set; }
         public List<Comment> Comments { get; set; } = new();
+
+
+        public required string UserId { get; set; }
+        public PlatformRestUser User { get; set; }
     }
     public record ReviewDto(int Id, string Text, int Evaluation,
         DateTime Date);

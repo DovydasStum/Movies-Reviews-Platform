@@ -1,23 +1,57 @@
 using FluentValidation;
 using FluentValidation.Results;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using MoviesReviewsPlatform;
+using MoviesReviewsPlatform.Auth;
+using MoviesReviewsPlatform.Auth.Model;
 using MoviesReviewsPlatform.Data;
 using MoviesReviewsPlatform.Data.Entities;
 using O9d.AspNet.FluentValidation;
 using SharpGrip.FluentValidation.AutoValidation.Endpoints.Extensions;
 using SharpGrip.FluentValidation.AutoValidation.Endpoints.Results;
 using SharpGrip.FluentValidation.AutoValidation.Shared.Extensions;
+using System.IdentityModel.Tokens.Jwt;
+using System.Text;
+
+JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<ForumDbContext>();
 builder.Services.AddValidatorsFromAssemblyContaining<Program>();
+builder.Services.AddTransient<JwtTokenService>();
+builder.Services.AddTransient<SessionService>();
+builder.Services.AddScoped<AuthDbSeeder>();
 
 builder.Services.AddFluentValidationAutoValidation(configuration =>
 {
     configuration.OverrideDefaultResultFactoryWith<ProblemDetailsResultFactory>();
 });
+
+// Authorization
+builder.Services.AddIdentity<PlatformRestUser, IdentityRole>()
+    .AddEntityFrameworkStores<ForumDbContext>()
+    .AddDefaultTokenProviders();
+
+// Authentication: token validation
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options =>
+{
+    options.MapInboundClaims = false;
+    options.TokenValidationParameters.ValidAudience = builder.Configuration["Jwt:ValidAudience"];
+    options.TokenValidationParameters.ValidIssuer = builder.Configuration["Jwt:ValidIssuer"];
+    options.TokenValidationParameters.IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Secret"]));
+});
+
+builder.Services.AddAuthorization();
+
 
 var app = builder.Build();
 
@@ -29,6 +63,17 @@ app.AddReviewApi();
 
 // Comments api call
 app.AddCommentApi();
+
+
+app.AddAuthApi();
+app.UseAuthentication();
+app.UseAuthorization();
+
+
+using var scope = app.Services.CreateScope();
+//var dbContext = scope.ServiceProvider.GetRequiredService<ForumDbContext>();
+var dbSeeder = scope.ServiceProvider.GetRequiredService<AuthDbSeeder>();
+await dbSeeder.SeedAsync();
 
 app.Run();
 
