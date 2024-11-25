@@ -16,7 +16,7 @@ namespace MoviesReviewsPlatform.Auth
 
         public async Task SeedAsync()
         {
-            await AddDefaultRoles();
+            await AddDefaultRoles(); 
             await AddAdminUser();
         }
 
