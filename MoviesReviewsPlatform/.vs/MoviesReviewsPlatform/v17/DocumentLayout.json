@@ -3,24 +3,8 @@
   "WorkspaceRootPath": "D:\\Studies\\IV course\\Saitynai\\Platform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0B8C871D-F619-4410-A6DA-B42F0642BEB4}|MoviesReviewsPlatform\\MoviesReviewsPlatform.csproj|d:\\studies\\iv course\\saitynai\\platform\\moviesreviewsplatform\\moviesreviewsplatform\\moviesreviewsplatform\\endpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0B8C871D-F619-4410-A6DA-B42F0642BEB4}|MoviesReviewsPlatform\\MoviesReviewsPlatform.csproj|solutionrelative:moviesreviewsplatform\\endpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0B8C871D-F619-4410-A6DA-B42F0642BEB4}|MoviesReviewsPlatform\\MoviesReviewsPlatform.csproj|d:\\studies\\iv course\\saitynai\\platform\\moviesreviewsplatform\\moviesreviewsplatform\\moviesreviewsplatform\\auth\\authendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0B8C871D-F619-4410-A6DA-B42F0642BEB4}|MoviesReviewsPlatform\\MoviesReviewsPlatform.csproj|solutionrelative:moviesreviewsplatform\\auth\\authendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0B8C871D-F619-4410-A6DA-B42F0642BEB4}|MoviesReviewsPlatform\\MoviesReviewsPlatform.csproj|d:\\studies\\iv course\\saitynai\\platform\\moviesreviewsplatform\\moviesreviewsplatform\\moviesreviewsplatform\\auth\\jwttokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0B8C871D-F619-4410-A6DA-B42F0642BEB4}|MoviesReviewsPlatform\\MoviesReviewsPlatform.csproj|solutionrelative:moviesreviewsplatform\\auth\\jwttokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0B8C871D-F619-4410-A6DA-B42F0642BEB4}|MoviesReviewsPlatform\\MoviesReviewsPlatform.csproj|d:\\studies\\iv course\\saitynai\\platform\\moviesreviewsplatform\\moviesreviewsplatform\\moviesreviewsplatform\\data\\entities\\session.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0B8C871D-F619-4410-A6DA-B42F0642BEB4}|MoviesReviewsPlatform\\MoviesReviewsPlatform.csproj|solutionrelative:moviesreviewsplatform\\data\\entities\\session.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0B8C871D-F619-4410-A6DA-B42F0642BEB4}|MoviesReviewsPlatform\\MoviesReviewsPlatform.csproj|d:\\studies\\iv course\\saitynai\\platform\\moviesreviewsplatform\\moviesreviewsplatform\\moviesreviewsplatform\\auth\\sessionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0B8C871D-F619-4410-A6DA-B42F0642BEB4}|MoviesReviewsPlatform\\MoviesReviewsPlatform.csproj|solutionrelative:moviesreviewsplatform\\auth\\sessionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0B8C871D-F619-4410-A6DA-B42F0642BEB4}|MoviesReviewsPlatform\\MoviesReviewsPlatform.csproj|d:\\studies\\iv course\\saitynai\\platform\\moviesreviewsplatform\\moviesreviewsplatform\\moviesreviewsplatform\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{0B8C871D-F619-4410-A6DA-B42F0642BEB4}|MoviesReviewsPlatform\\MoviesReviewsPlatform.csproj|solutionrelative:moviesreviewsplatform\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0B8C871D-F619-4410-A6DA-B42F0642BEB4}|MoviesReviewsPlatform\\MoviesReviewsPlatform.csproj|d:\\studies\\iv course\\saitynai\\platform\\moviesreviewsplatform\\moviesreviewsplatform\\moviesreviewsplatform\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -39,79 +23,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Endpoints.cs",
-              "DocumentMoniker": "D:\\Studies\\IV course\\Saitynai\\Platform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\Endpoints.cs",
-              "RelativeDocumentMoniker": "MoviesReviewsPlatform\\Endpoints.cs",
-              "ToolTip": "D:\\Studies\\IV course\\Saitynai\\Platform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\Endpoints.cs",
-              "RelativeToolTip": "MoviesReviewsPlatform\\Endpoints.cs",
-              "ViewState": "AgIAAG8BAAAAAAAAAAAwwIABAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-23T18:45:12.497Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "JwtTokenService.cs",
-              "DocumentMoniker": "D:\\Studies\\IV course\\Saitynai\\Platform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\Auth\\JwtTokenService.cs",
-              "RelativeDocumentMoniker": "MoviesReviewsPlatform\\Auth\\JwtTokenService.cs",
-              "ToolTip": "D:\\Studies\\IV course\\Saitynai\\Platform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\Auth\\JwtTokenService.cs",
-              "RelativeToolTip": "MoviesReviewsPlatform\\Auth\\JwtTokenService.cs",
-              "ViewState": "AgIAAEQAAAAAAAAAAAAIwFgAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-23T18:35:44.881Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "SessionService.cs",
-              "DocumentMoniker": "D:\\Studies\\IV course\\Saitynai\\Platform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\Auth\\SessionService.cs",
-              "RelativeDocumentMoniker": "MoviesReviewsPlatform\\Auth\\SessionService.cs",
-              "ToolTip": "D:\\Studies\\IV course\\Saitynai\\Platform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\Auth\\SessionService.cs",
-              "RelativeToolTip": "MoviesReviewsPlatform\\Auth\\SessionService.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAgwDQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-23T18:10:08.44Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Session.cs",
-              "DocumentMoniker": "D:\\Studies\\IV course\\Saitynai\\Platform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\Data\\Entities\\Session.cs",
-              "RelativeDocumentMoniker": "MoviesReviewsPlatform\\Data\\Entities\\Session.cs",
-              "ToolTip": "D:\\Studies\\IV course\\Saitynai\\Platform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\Data\\Entities\\Session.cs",
-              "RelativeToolTip": "MoviesReviewsPlatform\\Data\\Entities\\Session.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-23T18:09:51.853Z",
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Studies\\IV course\\Saitynai\\Platform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\appsettings.json",
+              "RelativeDocumentMoniker": "MoviesReviewsPlatform\\appsettings.json",
+              "ToolTip": "D:\\Studies\\IV course\\Saitynai\\Platform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\appsettings.json",
+              "RelativeToolTip": "MoviesReviewsPlatform\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-11-25T15:12:24.61Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "AuthEndpoints.cs",
-              "DocumentMoniker": "D:\\Studies\\IV course\\Saitynai\\Platform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\Auth\\AuthEndpoints.cs",
-              "RelativeDocumentMoniker": "MoviesReviewsPlatform\\Auth\\AuthEndpoints.cs",
-              "ToolTip": "D:\\Studies\\IV course\\Saitynai\\Platform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\Auth\\AuthEndpoints.cs",
-              "RelativeToolTip": "MoviesReviewsPlatform\\Auth\\AuthEndpoints.cs",
-              "ViewState": "AgIAAHMAAAAAAAAAAAAQwKsAAAA9AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-08T13:53:57.849Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Studies\\IV course\\Saitynai\\Platform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\Program.cs",
               "RelativeDocumentMoniker": "MoviesReviewsPlatform\\Program.cs",
               "ToolTip": "D:\\Studies\\IV course\\Saitynai\\Platform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\MoviesReviewsPlatform\\Program.cs",
               "RelativeToolTip": "MoviesReviewsPlatform\\Program.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAC4AAAAlAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-18T12:01:10.402Z",
+              "WhenOpened": "2024-11-25T14:05:48.715Z",
               "EditorCaption": ""
             }
           ]
