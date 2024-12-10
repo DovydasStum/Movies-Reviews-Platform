@@ -300,3 +300,7 @@ D:\Studies\IV course\Saitynai\Platform\MoviesReviewsPlatform\MoviesReviewsPlatfo
 D:\Studies\IV course\Saitynai\Platform\MoviesReviewsPlatform\MoviesReviewsPlatform\MoviesReviewsPlatform\bin\Debug\net8.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
 D:\Studies\IV course\Saitynai\Platform\MoviesReviewsPlatform\MoviesReviewsPlatform\MoviesReviewsPlatform\bin\Debug\net8.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
 D:\Studies\IV course\Saitynai\Platform\MoviesReviewsPlatform\MoviesReviewsPlatform\MoviesReviewsPlatform\bin\Debug\net8.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+D:\Studies\IV course\Saitynai\Platform\MoviesReviewsPlatform\MoviesReviewsPlatform\MoviesReviewsPlatform\bin\Debug\net8.0\UI\app\package-lock.json
+D:\Studies\IV course\Saitynai\Platform\MoviesReviewsPlatform\MoviesReviewsPlatform\MoviesReviewsPlatform\bin\Debug\net8.0\UI\app\package.json
+D:\Studies\IV course\Saitynai\Platform\MoviesReviewsPlatform\MoviesReviewsPlatform\MoviesReviewsPlatform\bin\Debug\net8.0\UI\app\public\manifest.json
+D:\Studies\IV course\Saitynai\Platform\MoviesReviewsPlatform\MoviesReviewsPlatform\MoviesReviewsPlatform\bin\Debug\net8.0\UI\package-lock.json
