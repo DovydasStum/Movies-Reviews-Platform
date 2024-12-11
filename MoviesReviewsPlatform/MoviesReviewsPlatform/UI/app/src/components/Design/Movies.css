@@ -1,0 +1,136 @@
+﻿.moviesHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.createButton {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+    .createButton:hover {
+        background-color: #218838;
+    }
+
+.moviesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.movieCard {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+    .movieCard:hover {
+        transform: scale(1.02);
+    }
+
+.movieTitle {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.movieProperty {
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.buttonGroup {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.editButton,
+.deleteButton,
+.viewReviewsButton {
+    padding: 8px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.editButton {
+    background-color: #ffc107;
+    color: #000;
+    border: none;
+}
+
+.deleteButton {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+}
+
+.viewReviewsButton {
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 12px;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalContent {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modalInput {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+    font-size: 1rem;
+}
+
+.modalButtons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.saveButton {
+    background-color: #28a745;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cancelButton {
+    background-color: #dc3545;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

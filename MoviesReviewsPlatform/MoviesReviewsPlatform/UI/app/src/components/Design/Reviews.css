@@ -1,0 +1,31 @@
+﻿/* Shared button styles */
+.editButton, .deleteButton, .commentsButton {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+/* Edit Button */
+.editButton {
+    background-color: #f0ad4e;
+    color: white;
+}
+
+/* Delete Button */
+.deleteButton {
+    background-color: #d9534f;
+    color: white;
+}
+
+/* Comments Button */
+.commentsButton {
+    background-color: #2196f3; /* Blue color for comments button */
+    color: white;
+}
+
+ /*   Add hover effect for buttons*/ 
+.editButton:hover, .deleteButton:hover, .commentsButton:hover {
+    opacity: 0.9;
+}

@@ -1,53 +1,144 @@
-﻿import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import axios from 'axios';
+﻿import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import axios from "axios";
+import apiUrl from "../config/url";
+import Header from "../components/Header";
+import "../components/Design/Comments.css";
 
 const Comments = () => {
-    const { reviewId } = useParams();
+    const { movieId, reviewId } = useParams();
     const [comments, setComments] = useState([]);
-    const [newComment, setNewComment] = useState('');
+    const [showModal, setShowModal] = useState(false);
+    const [currentComment, setCurrentComment] = useState(null);
+    const [commentData, setCommentData] = useState({ text: "" });
+
+    const userId = localStorage.getItem("userId");
+    const token = localStorage.getItem("accessToken");
 
     useEffect(() => {
-        // Fetch comments for the specific review
-        const fetchComments = async () => {
-            try {
-                const response = await axios.get(`https://shark-app-ihz3p.ondigitalocean.app/api/movies/reviews/${reviewId}/comments`);
-                setComments(response.data);
-            } catch (error) {
-                console.error('Error fetching comments:', error);
-            }
-        };
         fetchComments();
-    }, [reviewId]);
+    }, [movieId, reviewId]);
 
-    const handleAddComment = async () => {
+    const fetchComments = async () => {
         try {
-            await axios.post(`https://shark-app-ihz3p.ondigitalocean.app/api/movies/reviews/${reviewId}/comments`, { text: newComment });
-            setNewComment('');
-            // Optionally, reload comments
+            const response = await axios.get(`${apiUrl}/movies/${movieId}/reviews/${reviewId}/comments`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+            setComments(response.data || []);
         } catch (error) {
-            console.error('Error adding comment:', error);
+            console.error("Error fetching comments:", error);
         }
     };
 
+    const handleDelete = async (id) => {
+        try {
+            await axios.delete(`${apiUrl}/movies/${movieId}/reviews/${reviewId}/comments/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+            fetchComments();
+        } catch (error) {
+            console.error("Error deleting comment:", error);
+        }
+    };
+
+    const handleSave = async () => {
+        if (!commentData.text.trim()) {
+            alert("Comment cannot be empty!");
+            return;
+        }
+
+        try {
+            if (currentComment) {
+                await axios.put(`${apiUrl}/movies/${movieId}/reviews/${reviewId}/comments/${currentComment.id}`, commentData, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+            } else {
+                await axios.post(`${apiUrl}/movies/${movieId}/reviews/${reviewId}/comments`, { ...commentData, userId }, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+            }
+
+            fetchComments();
+            setShowModal(false);
+            setCommentData({ text: "" });
+        } catch (error) {
+            console.error("Error saving comment:", error);
+        }
+    };
+
+    const handleEdit = (comment) => {
+        setCurrentComment(comment);
+        setCommentData(comment);
+        setShowModal(true);
+    };
+
+    const handleCreate = () => {
+        setCurrentComment(null);
+        setCommentData({ text: "" });
+        setShowModal(true);
+    };
+
     return (
-        <div>
-            <h2>Comments</h2>
+        <div className="container">
+            <Header />
+            <div className="commentsHeader">
+                <h2 className="heading">Comments for Review {reviewId}</h2>
+                <button className="createButton" onClick={handleCreate}>
+                    Add New Comment
+                </button>
+            </div>
             {comments.length === 0 ? (
-                <p>No comments yet.</p>
+                <p className="noComments">No comments available</p>
             ) : (
-                <ul>
+                <ul className="commentsList">
                     {comments.map((comment) => (
-                        <li key={comment.id}>{comment.text}</li>
+                        <li key={comment.id} className="commentItem">
+                            <p className="commentText">{comment.text}</p>
+                            <span className="commentDate">
+                                {new Date(comment.date).toLocaleDateString()}
+                            </span>
+                            <div className="buttonGroup">
+                                <button onClick={() => handleEdit(comment)} className="editButton">
+                                    Edit
+                                </button>
+                                <button onClick={() => handleDelete(comment.id)} className="deleteButton">
+                                    Delete
+                                </button>
+                            </div>
+                        </li>
                     ))}
                 </ul>
             )}
-            <textarea
-                value={newComment}
-                onChange={(e) => setNewComment(e.target.value)}
-                placeholder="Add a comment"
-            />
-            <button onClick={handleAddComment}>Add Comment</button>
+
+            {showModal && (
+                <div className="modal">
+                    <div className="modalContent">
+                        <h3>{currentComment ? "Edit Comment" : "Add New Comment"}</h3>
+                        <textarea
+                            placeholder="Write your comment here..."
+                            value={commentData.text}
+                            onChange={(e) => setCommentData({ ...commentData, text: e.target.value })}
+                            className="modalInput"
+                        ></textarea>
+                        <div className="modalButtons">
+                            <button onClick={handleSave} className="saveButton">
+                                Save
+                            </button>
+                            <button onClick={() => setShowModal(false)} className="cancelButton">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

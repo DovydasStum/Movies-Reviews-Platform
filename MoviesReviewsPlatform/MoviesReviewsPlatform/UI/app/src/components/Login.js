@@ -1,71 +1,68 @@
-﻿import React, { useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import Register from './Register';
-import { Link } from 'react-router-dom';
+﻿import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import apiUrl from '../config/url';
+import { jwtDecode } from 'jwt-decode'
+import "../components/Design/Login.css";
 
-const Login = () => {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
+function Login() {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
     const handleLogin = async (e) => {
         e.preventDefault();
 
-        const apiUrl = process.env.REACT_APP_API_URL;
+        // Send login request to backend
+        const response = await fetch(`${apiUrl}/login`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, password }),
+        });
 
-        try {
-            const response = await axios.post(`${apiUrl}/api/login`, {
-                username,
-                password,
-            });
+        if (response.ok) {
+            const data = await response.json();
+            const accessToken = data.accessToken;
+            const decodedToken = jwtDecode(accessToken); 
+            const userId = decodedToken.sub;
 
-            // On successful login, store the access token and navigate to the dashboard or home page
-            localStorage.setItem('accessToken', response.data.accessToken);
-            navigate('/dashboard'); // Replace with your desired route
-        } catch (err) {
-            setError('Login failed. Please try again.');
-            console.error(err);
+            localStorage.setItem("accessToken", accessToken);
+            localStorage.setItem("userId", userId);
+
+            navigate("/movies");
+        } else {
+            alert("Invalid credentials");
         }
     };
 
     return (
-        <div>
-            <h2>Login</h2>
-            <form onSubmit={handleLogin}>
-                <div>
-                    <label>Username:</label>
+        <div className="login-container">
+            <h1 className="login-heading">Login</h1>
+            <form className="login-form" onSubmit={handleLogin}>
+                <div className="input-group">
                     <input
                         type="text"
+                        placeholder="Username"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
-                        required
+                        className="input-field"
                     />
                 </div>
-                <div>
-                    <label>Password:</label>
+                <div className="input-group">
                     <input
                         type="password"
+                        placeholder="Password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        required
+                        className="input-field"
                     />
                 </div>
-                {error && <p style={{ color: 'red' }}>{error}</p>}
-                <button type="submit">Login</button>
+                <button type="submit" className="login-button">Login</button>
             </form>
-
-            {/* Register Link/Button */}
-            <div>
-                <p>
-                    Don't have an account?
-                    {/* Use Link to navigate to the Register page */}
-                    <Link to="/register">Register here</Link>
-                </p>
-            </div>
+            <p className="register-link">
+                Don't have an account? <a href="/register">Register</a>
+            </p>
         </div>
     );
-};
+}
 
 export default Login;

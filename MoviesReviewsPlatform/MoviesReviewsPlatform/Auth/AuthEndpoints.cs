@@ -50,7 +50,7 @@ public static class AuthEndpoints
                 return Results.UnprocessableEntity(new { Errors = errors });
             }
 
-            var roleResult = await userManager.AddToRoleAsync(newUser, PlatformRoles.PlatformUser);
+            var roleResult = await userManager.AddToRoleAsync(newUser, PlatformRoles.Admin);
             if (!roleResult.Succeeded)
             {
                 await transaction.RollbackAsync(); // Rollback in case role assignment fails

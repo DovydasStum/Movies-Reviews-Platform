@@ -1,0 +1,89 @@
+﻿/* Main container to center the register form */
+.register-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f6f9;
+    padding: 20px;
+}
+
+/* Heading styles */
+.register-heading {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: 600;
+}
+
+/* Form styling */
+.register-form {
+    background-color: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Styling for each input group */
+.input-group {
+    margin-bottom: 20px;
+}
+
+/* Input fields styling */
+.input-field {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+    /* Focus state for the input fields */
+    .input-field:focus {
+        border-color: #4f9eff;
+    }
+
+/* Error message styling */
+.error-message {
+    color: red;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+/* Button styling */
+.register-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #4f9eff;
+    border: none;
+    color: white;
+    font-size: 1.1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .register-button:hover {
+        background-color: #3578d5;
+    }
+
+/* Login link styling */
+.login-link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+
+    .login-link a {
+        color: #4f9eff;
+        text-decoration: none;
+    }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
