@@ -1,15 +1,21 @@
-﻿/* Main container to center the login form */
-.login-container {
+﻿.login-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f4f6f9;
+    background-color: lightslategray;
     padding: 20px;
 }
 
-/* Heading styles */
+.login-image {
+    max-width: 100%; 
+    max-height: 200px; 
+    height: auto; 
+    margin-bottom: 20px; 
+    border-radius: 8px;
+}
+
 .login-heading {
     font-size: 2rem;
     margin-bottom: 20px;
@@ -17,9 +23,8 @@
     font-weight: 600;
 }
 
-/* Form styling */
 .login-form {
-    background-color: white;
+    background-color: darkgray;
     padding: 40px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -27,7 +32,6 @@
     max-width: 400px;
 }
 
-/* Styling for each input group */
 .input-group {
     margin-bottom: 20px;
 }
@@ -42,40 +46,37 @@
     outline: none;
 }
 
-    /* Focus state for the input fields */
-    .input-field:focus {
-        border-color: #4f9eff;
-    }
+.input-field:focus {
+    border-color: #4f9eff;
+}
 
-/* Button styling */
 .login-button {
     width: 100%;
     padding: 12px;
-    background-color: #4f9eff;
     border: none;
     color: white;
     font-size: 1.1rem;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    background-color: lightslategray;
 }
 
-    .login-button:hover {
-        background-color: #3578d5;
-    }
+.login-button:hover {
+    background-color: orange;
+}
 
-/* Register link styling */
 .register-link {
     text-align: center;
     margin-top: 20px;
     font-size: 0.9rem;
 }
 
-    .register-link a {
-        color: #4f9eff;
-        text-decoration: none;
-    }
+.register-link a {
+    color: orange;
+    text-decoration: none;
+}
 
-        .register-link a:hover {
-            text-decoration: underline;
-        }
+.register-link a:hover {
+    text-decoration: underline;
+}

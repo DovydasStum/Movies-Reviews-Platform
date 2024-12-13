@@ -3,6 +3,7 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import Header from "../components/Header";
 import "../components/Design/Reviews.css";
+import Footer from "../components/Footer";
 import apiUrl from "../config/url";
 
 const Reviews = () => {
@@ -10,57 +11,60 @@ const Reviews = () => {
     const navigate = useNavigate();
     const [reviews, setReviews] = useState([]);
     const [showModal, setShowModal] = useState(false);
-    const [currentReview, setCurrentReview] = useState(null); // For editing a review
+    const [currentReview, setCurrentReview] = useState(null);
     const [reviewData, setReviewData] = useState({
         text: "",
-        evaluation: 0, // Range: 1-5
+        evaluation: 0,
     });
 
-    const token = localStorage.getItem("accessToken"); // Get token from localStorage
+    const token = localStorage.getItem("accessToken");
+    const userId = localStorage.getItem("userId");
 
     useEffect(() => {
         if (token) {
             loadReviews();
         } else {
             console.error("No access token found. Please log in.");
-            navigate("/login"); // Redirect to login if token is not found
+            navigate("/login");
         }
     }, [movieId, token]);
 
-    // Load reviews for the movie
     const loadReviews = async () => {
         try {
             const response = await axios.get(
                 `${apiUrl}/movies/${movieId}/reviews`,
                 {
                     headers: {
-                        Authorization: `Bearer ${token}`, // Include the Authorization header with the token
+                        Authorization: `Bearer ${token}`,
                     },
                 }
             );
-            setReviews(response.data || []); // Set reviews data or an empty array if not available
-
+            setReviews(response.data || []);
         } catch (error) {
             console.error("Error fetching reviews:", error);
         }
     };
 
-    // Handle deleting a review
     const handleDelete = async (id) => {
         try {
             await axios.delete(`${apiUrl}/movies/${movieId}/reviews/${id}`, {
                 headers: {
-                    Authorization: `Bearer ${token}`, // Include the Authorization header with the token
+                    Authorization: `Bearer ${token}`,
                 },
             });
-            loadReviews(); // Reload the reviews after deletion
+            loadReviews();
         } catch (error) {
             console.error("Error deleting review:", error);
         }
     };
 
-    // Handle saving a new or updated review
     const handleSave = async () => {
+        // Validate if the review text is empty
+        if (!reviewData.text.trim()) {
+            alert("Review cannot be empty! Please write a review.");
+            return;
+        }
+
         try {
             const reviewPayload = { ...reviewData, date: new Date().toISOString() };
 
@@ -88,8 +92,8 @@ const Reviews = () => {
                 );
             }
 
-            loadReviews(); // Reload reviews after saving
-            setShowModal(false); // Close modal
+            loadReviews();
+            setShowModal(false);
             setReviewData({
                 text: "",
                 evaluation: 0,
@@ -99,28 +103,26 @@ const Reviews = () => {
         }
     };
 
-    // Handle editing a review
     const handleEdit = (review) => {
         setCurrentReview(review);
         setReviewData({ text: review.text, evaluation: review.evaluation });
         setShowModal(true);
     };
 
-    // Handle creating a new review
     const handleCreate = () => {
-        setCurrentReview(null); // Reset current review
+        setCurrentReview(null);
         setReviewData({
             text: "",
             evaluation: 0,
         });
-        setShowModal(true); // Show modal for creating a review
+        setShowModal(true);
     };
 
     return (
         <div className="container">
             <Header />
             <div className="reviewsHeader">
-                <h2 className="heading">Reviews for Movie {movieId}</h2>
+                <h2 className="heading">Reviews for movie {movieId}</h2>
                 <button className="createButton" onClick={handleCreate}>
                     Write Review
                 </button>
@@ -128,7 +130,7 @@ const Reviews = () => {
             {reviews.length === 0 ? (
                 <p className="noReviews">No reviews yet.</p>
             ) : (
-                <div className="reviewsGrid">
+                <div className="reviewsList">
                     {reviews.map((review, index) => (
                         <div key={review.id || index} className="reviewCard">
                             <p className="reviewDate">
@@ -155,7 +157,7 @@ const Reviews = () => {
                                     to={`/movies/${movieId}/reviews/${review.id}/comments`}
                                     className="commentsButton"
                                 >
-                                    Comments
+                                    View comments
                                 </Link>
                             </div>
                         </div>
@@ -200,6 +202,7 @@ const Reviews = () => {
                     </div>
                 </div>
             )}
+            <Footer />
         </div>
     );
 };

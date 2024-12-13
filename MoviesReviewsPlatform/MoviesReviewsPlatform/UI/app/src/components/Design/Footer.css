@@ -1,0 +1,31 @@
+﻿.footer {
+    background-color: darkslategray;
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.footerText {
+    font-size: 0.9rem;
+    color: white;
+    margin-bottom: 10px;
+    font-family: Arial, sans-serif;
+}
+
+.footerLinks {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.footerLink {
+    color: #4f9eff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.footerLink:hover {
+    color: #3578d5;
+    text-decoration: underline;
+}

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import apiUrl from "../config/url";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 import "../components/Design/Movies.css";
 
 const Movies = () => {
@@ -30,7 +31,7 @@ const Movies = () => {
         try {
             const response = await axios.get(`${apiUrl}/movies`, {
                 headers: {
-                    Authorization: `Bearer ${token}`, // Include the Authorization header
+                    Authorization: `Bearer ${token}`, 
                 },
             });
             setMovies(response.data || []);
@@ -43,7 +44,7 @@ const Movies = () => {
         try {
             await axios.delete(`${apiUrl}/movies/${id}`, {
                 headers: {
-                    Authorization: `Bearer ${token}`, // Include the Authorization header
+                    Authorization: `Bearer ${token}`,
                 },
             });
             loadMovies();
@@ -54,21 +55,18 @@ const Movies = () => {
 
     const handleSave = async () => {
         try {
-            // Ensure duration is formatted as "hh:mm:ss"
             const formattedDuration = formatDuration(movieData.duration);
 
             const moviePayload = { ...movieData, duration: formattedDuration, userId };
             console.log("payload: ", moviePayload);
 
             if (currentMovie) {
-                // Update movie
                 await axios.put(`${apiUrl}/movies/${currentMovie.id}`, moviePayload, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
                 });
             } else {
-                // Create new movie
                 await axios.post(`${apiUrl}/movies`, moviePayload, {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -112,25 +110,23 @@ const Movies = () => {
         setShowModal(true);
     };
 
-    // Helper function to format duration into "hh:mm:ss"
     const formatDuration = (duration) => {
-        // Assuming user input is in "hh:mm:ss" format already
         const timeParts = duration.split(":");
         if (timeParts.length === 2) {
-            return `${timeParts[0]}:${timeParts[1]}:00`; // Assumes "mm:ss" format, add seconds as 00
+            return `${timeParts[0]}:${timeParts[1]}:00`;
         } else if (timeParts.length === 3) {
-            return duration; // Valid "hh:mm:ss" format
+            return duration; 
         }
-        return "00:00:00"; // Default if input is invalid
+        return "00:00:00"; 
     };
 
     return (
         <div className="container">
             <Header />
             <div className="moviesHeader">
-                <h2 className="heading">Movies List</h2>
+                <h2 className="heading">Movies list</h2>
                 <button className="createButton" onClick={handleCreate}>
-                    Add New Movie
+                    Add new movie
                 </button>
             </div>
             {movies.length === 0 ? (
@@ -166,7 +162,7 @@ const Movies = () => {
                                     Delete
                                 </button>
                                 <Link to={`/movies/${movie.id}/reviews`} className="viewReviewsButton">
-                                    View Reviews
+                                    View reviews
                                 </Link>
                             </div>
                         </div>
@@ -237,6 +233,7 @@ const Movies = () => {
                     </div>
                 </div>
             )}
+            <Footer />
         </div>
     );
 };

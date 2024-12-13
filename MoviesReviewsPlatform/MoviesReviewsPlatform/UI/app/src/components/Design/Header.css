@@ -1,28 +1,105 @@
 ﻿.header {
+    background-color: darkslategray;
+    padding: 10px 20px;
+    color: white;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
-    background-color: #333;
-    color: #fff;
 }
 
 .brand {
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 2rem; 
+    font-weight: 500; 
+    display: flex;
+    align-items: center;
+}
+
+.brand-icon {
+    font-size: 3.8rem;
+}
+
+/* Desktop Menu */
+.menu {
+    display: flex;
+    gap: 20px;
+}
+
+.menu-link {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.menu-link:hover {
+    color: #dfeaff;
 }
 
 .logoutButton {
-    padding: 8px 16px;
-    background-color: #f44336;
-    color: #fff;
+    background-color: #ff4d4d;
+    color: white;
     border: none;
+    padding: 10px 15px;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease;
 }
 
-    .logoutButton:hover {
-        background-color: #d32f2f;
+.logoutButton:hover {
+    background-color: #e63939;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger .bar {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 3px 0;
+    transition: transform 0.3s ease;
+}
+
+/* Mobile Menu */
+.mobile-menu {
+    display: none;
+    flex-direction: column;
+    background-color: #4f9eff;
+    padding: 10px;
+    position: absolute;
+    width: 100%;
+    top: 60px;
+    left: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-menu .menu-link,
+.mobile-menu .logoutButton {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .desktop {
+        display: none;
     }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .mobile-menu {
+        display: flex;
+    }
+}

@@ -3,20 +3,22 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+    font-family: Arial, sans-serif;
 }
 
 .createButton {
     padding: 10px 20px;
-    background-color: #28a745;
-    color: #fff;
+    background-color: darkslategray !important;
+    color: white !important;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    font-family: Arial, sans-serif;
 }
 
-    .createButton:hover {
-        background-color: #218838;
-    }
+.createButton:hover {
+    background-color: #218838;
+}
 
 .moviesGrid {
     display: grid;
@@ -25,7 +27,7 @@
 }
 
 .movieCard {
-    background: #fff;
+    background: darkgray;
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 15px;
@@ -33,19 +35,21 @@
     transition: transform 0.2s;
 }
 
-    .movieCard:hover {
-        transform: scale(1.02);
-    }
+.movieCard:hover {
+    transform: scale(1.02);
+}
 
 .movieTitle {
     font-size: 1.5rem;
     margin-bottom: 10px;
-    color: #333;
+    color: black;
+    font-family: Arial, sans-serif;
 }
 
 .movieProperty {
     margin-bottom: 5px;
-    color: #555;
+    color: black;
+    font-family: Arial, sans-serif;
 }
 
 .buttonGroup {
@@ -64,22 +68,26 @@
 }
 
 .editButton {
-    background-color: #ffc107;
-    color: #000;
     border: none;
+    font-family: Arial, sans-serif;
+    background-color: darkslategray !important;
+    color: white !important;
 }
 
 .deleteButton {
-    background-color: #dc3545;
-    color: #fff;
     border: none;
+    font-family: Arial, sans-serif;
+    cursor: pointer;
+    background-color: darkslategray !important;
+    color: white !important;
 }
 
 .viewReviewsButton {
-    background-color: #007bff;
-    color: #fff;
     text-decoration: none;
     padding: 8px 12px;
+    font-family: Arial, sans-serif;
+    background-color: darkslategray !important;
+    color: white !important;
 }
 
 .modal {
@@ -102,6 +110,7 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+    font-family: Arial, sans-serif;
 }
 
 .modalInput {
@@ -110,6 +119,7 @@
     border-radius: 4px;
     width: 100%;
     font-size: 1rem;
+    font-family: Arial, sans-serif;
 }
 
 .modalButtons {
@@ -133,4 +143,29 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+
+@media (max-width: 768px) {
+    .moviesHeader {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .moviesGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .movieCard {
+        padding: 10px;
+    }
+
+    .modalContent {
+        width: 90%;
+    }
+}
+
+body {
+    background-color: lightslategray; 
 }

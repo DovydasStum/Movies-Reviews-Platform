@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import apiUrl from "../config/url";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 import "../components/Design/Comments.css";
 
 const Comments = () => {
@@ -46,19 +47,22 @@ const Comments = () => {
     };
 
     const handleSave = async () => {
+        // Validate if the comment text is empty
         if (!commentData.text.trim()) {
-            alert("Comment cannot be empty!");
+            alert("Comment cannot be empty! Please write something.");
             return;
         }
 
         try {
             if (currentComment) {
+                // Updating an existing comment
                 await axios.put(`${apiUrl}/movies/${movieId}/reviews/${reviewId}/comments/${currentComment.id}`, commentData, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
                 });
             } else {
+                // Creating a new comment
                 await axios.post(`${apiUrl}/movies/${movieId}/reviews/${reviewId}/comments`, { ...commentData, userId }, {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -90,21 +94,22 @@ const Comments = () => {
         <div className="container">
             <Header />
             <div className="commentsHeader">
-                <h2 className="heading">Comments for Review {reviewId}</h2>
+                <h2 className="heading">Comments for review {reviewId}</h2>
                 <button className="createButton" onClick={handleCreate}>
-                    Add New Comment
+                    Add new comment
                 </button>
             </div>
+
             {comments.length === 0 ? (
                 <p className="noComments">No comments available</p>
             ) : (
                 <ul className="commentsList">
                     {comments.map((comment) => (
                         <li key={comment.id} className="commentItem">
-                            <p className="commentText">{comment.text}</p>
                             <span className="commentDate">
-                                {new Date(comment.date).toLocaleDateString()}
+                                Date: {new Date(comment.date).toLocaleDateString()}
                             </span>
+                            <p className="commentText">{comment.text}</p>
                             <div className="buttonGroup">
                                 <button onClick={() => handleEdit(comment)} className="editButton">
                                     Edit
@@ -139,6 +144,8 @@ const Comments = () => {
                     </div>
                 </div>
             )}
+
+            <Footer />
         </div>
     );
 };
